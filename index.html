@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farah Souai | Portfolio Data & BI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      color: #1f2937;
+      background: #f8fafc;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 42px;
+    }
+
+    header p {
+      font-size: 18px;
+      margin: 15px auto 0;
+      max-width: 750px;
+    }
+
+    nav {
+      background: white;
+      text-align: center;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    nav a {
+      color: #0f172a;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 55px 20px;
+    }
+
+    h2 {
+      color: #0f172a;
+      border-bottom: 3px solid #2563eb;
+      display: inline-block;
+      padding-bottom: 7px;
+    }
+
+    .skills, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 6px 10px;
+      border-radius: 20px;
+      margin: 4px;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    footer a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Farah Souai</h1>
+    <p>Étudiante en Master Business Analytics | Recherche un stage PFE à Paris à partir de février 2027</p>
+    <p>Data Analyst • BI Analyst • Business Analyst</p>
+  </header>
+
+  <nav>
+    <a href="#apropos">À propos</a>
+    <a href="#competences">Compétences</a>
+    <a href="#projets">Projets</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="apropos">
+    <h2>À propos</h2>
+    <p>
+      Étudiante en Master Business Analytics à Esprit School of Business, je m’intéresse à l’analyse de données,
+      la Business Intelligence, le reporting décisionnel et la data visualisation.
+      Je recherche un stage PFE à Paris ou en Île-de-France à partir de février 2027.
+    </p>
+    <p>
+      Mon objectif est de transformer les données en tableaux de bord, indicateurs et analyses utiles
+      à la prise de décision.
+    </p>
+  </section>
+
+  <section id="competences">
+    <h2>Compétences</h2>
+    <div class="skills">
+      <div class="card">
+        <h3>Data & BI</h3>
+        <span class="tag">Power BI</span>
+        <span class="tag">DAX</span>
+        <span class="tag">KPI</span>
+        <span class="tag">Data Visualisation</span>
+        <span class="tag">Reporting</span>
+      </div>
+
+      <div class="card">
+        <h3>Données</h3>
+        <span class="tag">SQL</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Data Modeling</span>
+        <span class="tag">Data Warehouse</span>
+      </div>
+
+      <div class="card">
+        <h3>Analyse & Développement</h3>
+        <span class="tag">Python</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">React</span>
+        <span class="tag">GitHub</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <h2>Projets</h2>
+
+    <div class="projects">
+      <div class="card">
+        <h3>Analyse financière & Business Intelligence</h3>
+        <p>
+          Analyse de la performance financière d’entreprises agroalimentaires cotées à la BVMT
+          sur la période 2015–2024.
+        </p>
+        <p>
+          Création de tableaux de bord Power BI et analyse de ratios tels que ROA, ROE,
+          endettement, liquidité, FR, BFR et trésorerie nette.
+        </p>
+        <p><strong>Technologies :</strong> Power BI, SQL, Excel, DAX, Data Modeling, Machine Learning.</p>
+      </div>
+
+      <div class="card">
+        <h3>Gestion et analyse des rapports téléphoniques</h3>
+        <p>
+          Projet de gestion, reporting et analyse des rapports téléphoniques et de la taxation.
+        </p>
+        <p>
+          Exploitation de plus de 5 000 enregistrements et création de tableaux de bord
+          permettant le suivi de plus de 20 KPI financiers et opérationnels.
+        </p>
+        <p><strong>Technologies :</strong> Node.js, React.js, MySQL, Power BI, API REST.</p>
+      </div>
+
+      <div class="card">
+        <h3>Data Warehouse & Reporting décisionnel</h3>
+        <p>
+          Conception d’un Data Warehouse basé sur un modèle en étoile,
+          avec tables de faits, dimensions et analyses multidimensionnelles.
+        </p>
+        <p><strong>Technologies :</strong> SQL Server, SSMS, SQL, Power BI, Data Modeling.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email : souaifarah241@gmail.com</p>
+    <p>LinkedIn : <a href="https://www.linkedin.com/in/farah-souai-428b69299/" target="_blank">Voir mon profil LinkedIn</a></p>
+    <p>GitHub : <a href="https://github.com/farahsouai" target="_blank">Voir mon GitHub</a></p>
+  </section>
+
+  <footer>
+    <p>© 2026 Farah Souai | Portfolio Data & Business Intelligence</p>
+  </footer>
+
+</body>
+</html> 
