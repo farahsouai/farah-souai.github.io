@@ -1,212 +1,880 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Farah Souai | Portfolio Data & BI</title>
+
   <style>
+    :root {
+      --dark: #0b132b;
+      --dark-2: #1c2541;
+      --blue: #2563eb;
+      --blue-light: #60a5fa;
+      --purple: #7c3aed;
+      --white: #ffffff;
+      --text: #1f2937;
+      --light: #f5f7fb;
+      --border: #e5e7eb;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      color: #1f2937;
-      background: #f8fafc;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    header {
-      background: #0f172a;
-      color: white;
-      padding: 70px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 42px;
-    }
-
-    header p {
-      font-size: 18px;
-      margin: 15px auto 0;
-      max-width: 750px;
-    }
-
+    /* Navigation */
     nav {
-      background: white;
-      text-align: center;
-      padding: 15px;
-      position: sticky;
+      position: fixed;
+      width: 100%;
       top: 0;
-      border-bottom: 1px solid #e5e7eb;
+      z-index: 100;
+      background: rgba(11, 19, 43, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    nav a {
-      color: #0f172a;
-      text-decoration: none;
-      margin: 0 14px;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 1000px;
+    .nav-container {
+      max-width: 1150px;
       margin: auto;
-      padding: 55px 20px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    h2 {
-      color: #0f172a;
-      border-bottom: 3px solid #2563eb;
-      display: inline-block;
-      padding-bottom: 7px;
+    .logo {
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.3px;
     }
 
-    .skills, .projects {
+    .logo span {
+      color: var(--blue-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #dbeafe;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* Hero */
+    header {
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(96, 165, 250, 0.25), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(124, 58, 237, 0.28), transparent 30%),
+        linear-gradient(135deg, var(--dark), var(--dark-2));
+      color: white;
+      padding: 130px 24px 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.2;
+      filter: blur(5px);
+    }
+
+    header::before {
+      width: 330px;
+      height: 330px;
+      background: var(--blue);
+      right: -110px;
+      bottom: -100px;
+    }
+
+    header::after {
+      width: 260px;
+      height: 260px;
+      background: var(--purple);
+      left: -100px;
+      top: 110px;
+    }
+
+    .hero-container {
+      width: 100%;
+      max-width: 1150px;
+      margin: auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
     }
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 22px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .tag {
+    .hero-badge {
       display: inline-block;
-      background: #dbeafe;
-      color: #1d4ed8;
-      padding: 6px 10px;
-      border-radius: 20px;
-      margin: 4px;
+      padding: 8px 14px;
+      border-radius: 50px;
+      background: rgba(96, 165, 250, 0.15);
+      border: 1px solid rgba(147, 197, 253, 0.5);
+      color: #dbeafe;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.06;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(90deg, #93c5fd, #c4b5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      max-width: 650px;
+      color: #dbeafe;
+      font-size: 18px;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 13px 20px;
+      font-weight: 700;
+      transition: 0.25s;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-secondary {
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      animation: floating 4s ease-in-out infinite;
+    }
+
+    .hero-card h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .mini-stat {
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .mini-stat:last-child {
+      border-bottom: none;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 25px;
+      color: #bfdbfe;
+    }
+
+    .mini-stat span {
+      color: #dbeafe;
       font-size: 14px;
     }
 
-    footer {
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      padding: 25px;
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
 
-    footer a {
-      color: #93c5fd;
+    /* Sections */
+    section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 95px 24px;
+    }
+
+    .section-title {
+      margin-bottom: 35px;
+    }
+
+    .section-title span {
+      color: var(--blue);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      font-size: 13px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      color: var(--dark);
+      margin-top: 8px;
+      letter-spacing: -1px;
+    }
+
+    .section-title p {
+      max-width: 720px;
+      color: #64748b;
+      margin-top: 12px;
+      font-size: 16px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .about-box {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .about-box p {
+      color: #475569;
+      margin-bottom: 15px;
+    }
+
+    .about-list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+    }
+
+    .about-list li {
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .about-list li::before {
+      content: "✓";
+      color: var(--blue);
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 25px;
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .skill-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 20px;
+      background: #eff6ff;
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    .skill-card h3 {
+      color: var(--dark);
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #f1f5f9;
+      color: #334155;
+      border-radius: 20px;
+      padding: 7px 11px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Projects */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: 0.3s;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
+    }
+
+    .project-card:hover {
+      transform: translateY(-9px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-top {
+      min-height: 160px;
+      padding: 25px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-one {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    }
+
+    .project-two {
+      background: linear-gradient(135deg, #7c3aed, #5b21b6);
+    }
+
+    .project-three {
+      background: linear-gradient(135deg, #0f766e, #115e59);
+    }
+
+    .project-number {
+      font-size: 14px;
+      opacity: 0.85;
+      font-weight: 700;
+    }
+
+    .project-top h3 {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .project-content {
+      padding: 24px;
+    }
+
+    .project-content p {
+      color: #64748b;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .project-result {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 14px;
+    }
+
+    /* Contact */
+    .contact-box {
+      background: linear-gradient(135deg, var(--dark), var(--dark-2));
+      color: white;
+      border-radius: 24px;
+      padding: 52px;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h2 {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .contact-box p {
+      color: #cbd5e1;
+      max-width: 620px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .contact-links a {
       text-decoration: none;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 9px;
+      padding: 11px 15px;
+      transition: 0.25s;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .contact-links a:hover {
+      background: white;
+      color: var(--dark);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    /* Back to top */
+    #topBtn {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      background: var(--blue);
+      color: white;
+      border: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: none;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+      z-index: 99;
+    }
+
+    #topBtn:hover {
+      background: #1d4ed8;
+    }
+
+    /* Animation on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.75s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-container,
+      .about-grid,
+      .skills-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        max-width: 450px;
+      }
+
+      .contact-box {
+        display: block;
+        padding: 35px 28px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav-container {
+        padding: 15px 18px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      header {
+        min-height: auto;
+        padding: 140px 22px 75px;
+      }
+
+      .hero-text h1 {
+        font-size: 46px;
+      }
+
+      section {
+        padding: 70px 20px;
+      }
+
+      .section-title h2 {
+        font-size: 31px;
+      }
+
+      .contact-box h2 {
+        font-size: 29px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Farah Souai</h1>
-    <p>Étudiante en Master Business Analytics | Recherche un stage PFE </p>
-    <p>Data Analyst • BI Analyst • Business Analyst</p>
-  </header>
-
   <nav>
-    <a href="#apropos">À propos</a>
-    <a href="#competences">Compétences</a>
-    <a href="#projets">Projets</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-container">
+      <a href="#accueil" class="logo">Farah <span>Souai</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <section id="apropos">
-    <h2>À propos</h2>
-    <p>
-      Étudiante en Master Business Analytics à Esprit School of Business, je m’intéresse à l’analyse de données,
-      la Business Intelligence, le reporting décisionnel et la data visualisation.
-      Je recherche un stage PFE.
-    </p>
-    <p>
-      Mon objectif est de transformer les données en tableaux de bord, indicateurs et analyses utiles
-      à la prise de décision.
-    </p>
+  <header id="accueil">
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="hero-badge">Portfolio professionnel</div>
+
+        <h1>
+          Transformer les données<br>
+          en <span>décisions utiles.</span>
+        </h1>
+
+        <p>
+          Étudiante en Master Business Analytics, orientée Data Analyst,
+          Business Intelligence et Business Analysis.
+          Je recherche un stage PFE .
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+          <a href="#contact" class="btn btn-secondary">Me contacter</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Profil en bref</h3>
+
+        <div class="mini-stat">
+          <strong>Power BI</strong>
+          <span>Dashboards, KPI, reporting et DAX</span>
+        </div>
+
+        <div class="mini-stat">
+          <strong>SQL</strong>
+          <span>Modélisation, Data Warehouse et analyse</span>
+        </div>
+
+        <div class="mini-stat">
+          <strong>Data & Métier</strong>
+          <span>Analyse, visualisation et aide à la décision</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="apropos" class="reveal">
+    <div class="section-title">
+      <span>Mon profil</span>
+      <h2>À propos de moi</h2>
+      <p>
+        Un profil hybride combinant analyse de données, Business Intelligence
+        et compréhension des besoins métiers.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-box">
+        <p>
+          Je suis étudiante en Master Business Analytics à Esprit School of Business.
+          Je m’intéresse particulièrement aux projets qui permettent de transformer
+          des données brutes en analyses compréhensibles, tableaux de bord et indicateurs utiles.
+        </p>
+
+        <p>
+          Mes expériences m’ont permis de travailler avec Power BI, SQL, MySQL,
+          Python, Data Warehouse, reporting, KPI et modélisation de données.
+        </p>
+      </div>
+
+      <div class="about-box">
+        <ul class="about-list">
+          <li>Analyse de données et reporting décisionnel</li>
+          <li>Création de tableaux de bord Power BI</li>
+          <li>Suivi de KPI et aide à la décision</li>
+          <li>Modélisation de bases de données</li>
+          <li>Analyse métier et compréhension des besoins</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <section id="competences">
-    <h2>Compétences</h2>
-    <div class="skills">
-      <div class="card">
-        <h3>Data & BI</h3>
-        <span class="tag">Power BI</span>
-        <span class="tag">DAX</span>
-        <span class="tag">KPI</span>
-        <span class="tag">Data Visualisation</span>
-        <span class="tag">Reporting</span>
+  <section id="competences" class="reveal">
+    <div class="section-title">
+      <span>Expertise</span>
+      <h2>Compétences principales</h2>
+      <p>
+        Technologies et méthodes utilisées dans mes projets Data, BI et reporting.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">01</div>
+        <h3>Data & Business Intelligence</h3>
+        <div class="tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">DAX</span>
+          <span class="tag">KPI</span>
+          <span class="tag">Reporting</span>
+          <span class="tag">Visualisation</span>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Données</h3>
-        <span class="tag">SQL</span>
-        <span class="tag">SQL Server</span>
-        <span class="tag">MySQL</span>
-        <span class="tag">Data Modeling</span>
-        <span class="tag">Data Warehouse</span>
+      <div class="skill-card">
+        <div class="skill-icon">02</div>
+        <h3>Données & Modélisation</h3>
+        <div class="tags">
+          <span class="tag">SQL</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Data Warehouse</span>
+          <span class="tag">Modèle en étoile</span>
+        </div>
       </div>
 
-      <div class="card">
+      <div class="skill-card">
+        <div class="skill-icon">03</div>
         <h3>Analyse & Développement</h3>
-        <span class="tag">Python</span>
-        <span class="tag">Excel</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">React</span>
-        <span class="tag">GitHub</span>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Excel</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">React</span>
+          <span class="tag">GitHub</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="projets">
-    <h2>Projets</h2>
+  <section id="projets" class="reveal">
+    <div class="section-title">
+      <span>Réalisations</span>
+      <h2>Mes projets principaux</h2>
+      <p>
+        Une sélection de projets illustrant mes compétences en analyse, reporting et Business Intelligence.
+      </p>
+    </div>
 
-    <div class="projects">
-      <div class="card">
-        <h3>Analyse financière & Business Intelligence</h3>
-        <p>
-          Analyse de la performance financière d’entreprises agroalimentaires cotées à la BVMT
-          sur la période 2015–2024.
-        </p>
-        <p>
-          Création de tableaux de bord Power BI et analyse de ratios tels que ROA, ROE,
-          endettement, liquidité, FR, BFR et trésorerie nette.
-        </p>
-        <p><strong>Technologies :</strong> Power BI, SQL, Excel, DAX, Data Modeling, Machine Learning.</p>
-      </div>
+    <div class="project-grid">
+      <article class="project-card">
+        <div class="project-top project-one">
+          <span class="project-number">PROJET 01</span>
+          <h3>Analyse financière & Business Intelligence</h3>
+        </div>
 
-      <div class="card">
-        <h3>Gestion et analyse des rapports téléphoniques</h3>
-        <p>
-          Projet de gestion, reporting et analyse des rapports téléphoniques et de la taxation.
-        </p>
-        <p>
-          Exploitation de plus de 5 000 enregistrements et création de tableaux de bord
-          permettant le suivi de plus de 20 KPI financiers et opérationnels.
-        </p>
-        <p><strong>Technologies :</strong> Node.js, React.js, MySQL, Power BI, API REST.</p>
-      </div>
+        <div class="project-content">
+          <p>
+            Analyse financière d’entreprises agroalimentaires cotées à la BVMT
+            sur la période 2015–2024.
+          </p>
 
-      <div class="card">
-        <h3>Data Warehouse & Reporting décisionnel</h3>
-        <p>
-          Conception d’un Data Warehouse basé sur un modèle en étoile,
-          avec tables de faits, dimensions et analyses multidimensionnelles.
-        </p>
-        <p><strong>Technologies :</strong> SQL Server, SSMS, SQL, Power BI, Data Modeling.</p>
-      </div>
+          <div class="tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">SQL</span>
+            <span class="tag">DAX</span>
+            <span class="tag">Excel</span>
+          </div>
+
+          <p class="project-result">
+            KPI, ratios financiers, ROA, ROE, liquidité, FR, BFR et trésorerie nette.
+          </p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top project-two">
+          <span class="project-number">PROJET 02</span>
+          <h3>Gestion & Analyse des rapports téléphoniques</h3>
+        </div>
+
+        <div class="project-content">
+          <p>
+            Application de gestion, reporting et analyse des rapports téléphoniques
+            et de taxation.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">React</span>
+          </div>
+
+          <p class="project-result">
+            Plus de 5 000 enregistrements et suivi de plus de 20 KPI.
+          </p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top project-three">
+          <span class="project-number">PROJET 03</span>
+          <h3>Data Warehouse & Reporting décisionnel</h3>
+        </div>
+
+        <div class="project-content">
+          <p>
+            Conception d’un Data Warehouse basé sur un modèle en étoile
+            pour faciliter l’analyse multidimensionnelle.
+          </p>
+
+          <div class="tags">
+            <span class="tag">SQL Server</span>
+            <span class="tag">SSMS</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">ETL</span>
+          </div>
+
+          <p class="project-result">
+            Tables de faits, dimensions, requêtes SQL et tableaux de bord KPI.
+          </p>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email : souaifarah241@gmail.com</p>
-    <p>LinkedIn : <a href="https://www.linkedin.com/in/farah-souai-428b69299/" target="_blank">Voir mon profil LinkedIn</a></p>
-    <p>GitHub : <a href="https://github.com/farahsouai" target="_blank">Voir mon GitHub</a></p>
+  <section id="contact" class="reveal">
+    <div class="contact-box">
+      <div>
+        <h2>Travaillons ensemble</h2>
+        <p>
+          Je suis disponible pour échanger sur un stage PFE en Data Analyst,
+          BI Analyst, Business Analyst ou Reporting Analyst.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:souaifarah241@gmail.com">Envoyer un email</a>
+          <a href="https://www.linkedin.com/in/farah-souai-428b69299/" target="_blank">LinkedIn</a>
+          <a href="https://github.com/farahsouai" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>© 2026 Farah Souai | Portfolio Data & Business Intelligence</p>
+    © 2026 Farah Souai · Portfolio Data & Business Intelligence
   </footer>
 
+  <button id="topBtn" title="Retour en haut">↑</button>
+
+  <script>
+    const topBtn = document.getElementById("topBtn");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 500) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    });
+
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+    const elements = document.querySelectorAll(".reveal");
+
+    const revealOnScroll = () => {
+      elements.forEach((element) => {
+        const position = element.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+
+        if (position < screenHeight - 80) {
+          element.classList.add("active");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+  </script>
+
 </body>
-</html> 
+</html>
+```
+
